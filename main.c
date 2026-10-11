@@ -5,26 +5,25 @@ int main(void)
 {
     int taskNum = 0, numPages, numCopies, isDuplex, isUrgent;
 
-    // Header
-    printf("+================================================+\n");
-    printf("|         Campus Print & Copy Hub System         |\n");
-    printf("|               CSE115.6L - Team 5               |\n");
-    printf("|             North South University             |\n");
-    printf("+================================================+\n\n");
+    printf("*=========================================*\n");
+    printf("\tCampus Print & Copy Hub System\n");
+    printf("\tCSE115.6L - Team 5\n");
+    printf("\tNorth South University\n");
+    printf("*=========================================*\n\n");
+    printf("\t[1] Accept new print task\n");
+    printf("\t[2] Display current queue\n");
+    printf("\t[3] Process & complete next print task\n");
+    printf("\t[4] Search task by customer\n");
+    printf("\t[5] Generate daily revenue & task report\n");
+    printf("\t[6] Save & load data\n");
+    printf("\t[0] Exit\n\n");
+    printf("*=========================================*\n");
+    printf("\tChoose an option to continue\n");
+    printf("*=========================================*\n\n");
 
-    // Selection Menu
-    printf("  [1] Accept new print task\n");
-    printf("  [2] Display current queue\n");
-    printf("  [3] Process & complete next print task\n");
-    printf("  [4] Search task by customer\n");
-    printf("  [5] Generate daily revenue & task report\n");
-    printf("  [6] Save & load data\n");
-    printf("  [0] Exit\n\n");
-
-    // Footer
-    printf("+------------------------------------------------+\n");
-    printf("|  Choose an option to continue                  |\n");
-    printf("+------------------------------------------------+\n\n");
+    printf("*=========================================*\n");
+    printf("\tNew Task Entry\n");
+    printf("*=========================================*\n\n");
 
     taskNum = taskNum + 1;
     printf("Enter number of pages >> ");
@@ -41,21 +40,19 @@ int main(void)
     double totalCost = totalSheets * RATE_PER_PAGE;
     int queuePosition = isUrgent * taskNum + (1 - isUrgent) * (taskNum + 1); // innacurate, only placeholder
 
-    // Specimen task record
-    printf("+================================================+\n");
-    printf("|               Task Token              |\n");
-    printf("+================================================+\n\n");
-    printf("Task number\t: %d\n", taskNum);
-    printf("Document pages\t: %d\n", numPages);
-    printf("Number of copies: %d\n", numCopies);
-    printf("Duplex flag\t: %d\n", isDuplex);
-    printf("Urgent flag\t: %d\n", isUrgent);
-    printf("--------------------------------------------------\n");
-    printf("Pages per copy\t: %d\n", sheetsPerCopy);
-    printf("Total pages\t: %d\n", totalSheets);
-    printf("Total cost\t: BDT %.2f\n", totalCost);
-    printf("Pos. in queue\t: %d\n", queuePosition);
-    printf("--------------------------------------------------\n");
+    printf("\n*=========================================*\n");
+    printf("\tTask Token\n");
+    printf("*=========================================*\n");
+    printf("\tTask number\t: %d\n", taskNum);
+    printf("\tDocument pages\t: %d\n", numPages);
+    printf("\tNumber of copies: %d\n", numCopies);
+    printf("\tDuplex flag\t: %d\n", isDuplex);
+    printf("\tUrgent flag\t: %d\n", isUrgent);
+    printf("*=========================================*\n");
+    printf("\tPages per copy\t: %d\n", sheetsPerCopy);
+    printf("\tTotal pages\t: %d\n", totalSheets);
+    printf("\tTotal cost\t: BDT %.2f\n", totalCost);
+    printf("\tPos. in queue\t: %d\n", queuePosition);
 
     return 0;
 }

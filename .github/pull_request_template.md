@@ -1,7 +1,8 @@
 # Contribution Submission
 
 **Version:** V_
-**Selected Task:** 
+
+**Selected Task:**
 
 ## Checklist
 - [ ] I completed the code required by my task.

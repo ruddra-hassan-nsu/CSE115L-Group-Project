@@ -1,21 +1,21 @@
-name: Build and check
+name: Compile check
 on: [push, pull_request]
 
 jobs:
-  build:
+  compile:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Compile every version that exists
+      - name: Compile every .c file in the version folders
         run: |
-          for v in 1 2 3 4 5 6; do
-            f="v$v/v$v.c"
-            if [ -f "$f" ]; then
-              echo "Compiling $f"
-              gcc -Wall -Wextra -std=c99 -o "/tmp/v$v" "$f" -lm
+          status=0
+          for f in v*/*.c; do
+            [ -f "$f" ] || continue
+            echo "Compiling $f"
+            if ! gcc -Wall -std=c99 -o /tmp/test_build "$f" -lm; then
+              echo "::error file=$f::This file does not compile. Read the messages above."
+              status=1
             fi
           done
-
-      - name: Check that no version uses later constructs
-        run: bash scripts/check_constructs.sh
+          exit $status

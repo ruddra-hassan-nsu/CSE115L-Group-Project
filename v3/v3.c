@@ -2,26 +2,25 @@
 #define RATE_PER_SHEET 4.00
 
 /* global variables */
-int g_taskNum = 0, g_pages, g_copies, g_duplex, g_urgent;
+int g_task_num = 0, g_pages, g_copies, g_duplex, g_urgent;
 
-void banner(void);
-void menu(void);
+void show_banner(void);
+void show_menu(void);
 void read_job(void);
-int sheets_per_copy(int pages, int duplex);
-double total_cost(int totalSheets);
-void print_job(int perCopy);
+int calc_sheets_per_copy(int pages, int duplex);
+int calc_total_sheets(int sheets_per_copy, int copies);
+double calc_total_cost(int total_sheets);
+void accept_job(void);
 
 int main(void)
 {
-    banner();
-    menu();
-    read_job();
-    print_job(sheets_per_copy(g_pages, g_duplex));
+    show_banner();
+    show_menu();
+    accept_job();
     return 0;
 }
 
-/* ==== OWNER: Member 1 | banner | status: TODO ==== */
-void banner(void)
+void show_banner(void)
 {
     printf("*=========================================*\n");
     printf("\tCampus Print & Copy Hub System\n");
@@ -30,8 +29,7 @@ void banner(void)
     printf("*=========================================*\n\n");
 }
 
-/* ==== OWNER: Member 1 | menu | status: TODO ==== */
-void menu(void)
+void show_menu(void)
 {
     printf("\t[1] Accept new print task\n");
     printf("\t[2] Display current queue\n");
@@ -45,29 +43,60 @@ void menu(void)
     printf("*=========================================*\n\n");
 }
 
-/* ==== OWNER: Member 4 | read_job | status: TODO ==== */
 void read_job(void)
 {
-    /* TODO: g_taskNum = g_taskNum + 1; scanf the four fields into g_* */
+    printf("*=========================================*\n");
+    printf("\tNew Task Entry\n");
+    printf("*=========================================*\n\n");
+
+    g_task_num = g_task_num + 1;
+    printf("Enter number of pages >> ");
+    scanf("%d", &g_pages);
+    printf("Enter number of copies >> ");
+    scanf("%d", &g_copies);
+    printf("Duplex print? (1-YES, 0-NO) >> ");
+    scanf("%d", &g_duplex);
+    printf("Urgent? (1-YES, 0-NO) >> ");
+    scanf("%d", &g_urgent);
 }
 
-/* ==== OWNER: Member 3 | sheets_per_copy | status: TODO ==== */
-int sheets_per_copy(int pages, int duplex)
+int calc_sheets_per_copy(int pages, int duplex)
 {
-    /* TODO: same expression as v2, using the parameters, no globals */
-    return 0;
+    return duplex * ((pages + 1) / 2) + (1 - duplex) * pages;
 }
 
-/* ==== OWNER: Member 3 | total_cost | status: TODO ==== */
-double total_cost(int totalSheets)
+int calc_total_sheets(int sheets_per_copy, int copies)
 {
-    /* TODO: return totalSheets * RATE_PER_SHEET */
-    return 0.0;
+    return sheets_per_copy * copies;
 }
 
-/* ==== OWNER: Member 2 | print_job | status: TODO ==== */
-void print_job(int perCopy)
+double calc_total_cost(int total_sheets)
 {
-    /* TODO: totalSheets = perCopy * g_copies; cost = total_cost(totalSheets);
-       print the task token like v2 */
+    return total_sheets * RATE_PER_SHEET;
+}
+
+int calc_queue_position(int task_number, int is_urgent)
+{
+    return is_urgent * (task_number) + (1 - is_urgent) * (task_number + 1);
+}
+
+void accept_job(void)
+{
+    read_job();
+    int sheets_per_copy = calc_sheets_per_copy(g_pages, g_duplex);
+    int total_sheets = calc_total_sheets(sheets_per_copy, g_copies);
+
+    printf("\n*=========================================*\n");
+    printf("\tTask Token\n");
+    printf("*=========================================*\n");
+    printf("\tTask number\t: %d\n", g_task_num);
+    printf("\tDocument pages\t: %d\n", g_pages);
+    printf("\tNumber of copies: %d\n", g_copies);
+    printf("\tDuplex flag\t: %d\n", g_duplex);
+    printf("\tUrgent flag\t: %d\n", g_urgent);
+    printf("*=========================================*\n");
+    printf("\tPages per copy\t: %d\n", sheets_per_copy);
+    printf("\tTotal pages\t: %d\n", total_sheets);
+    printf("\tTotal cost\t: BDT %.2f\n", calc_total_cost(total_sheets));
+    printf("\tPos. in queue\t: %d\n", calc_queue_position(g_task_num, g_urgent));
 }

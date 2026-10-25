@@ -1,4 +1,19 @@
+# Compiled files
 *.exe
+*.o
+*.out
+
+# Code::Blocks build output (keep the .cbp project file if you use one)
+bin/
+obj/
+*.layout
+*.depend
+
+# Editors
 .vscode/
-.code-workspace/
+*.code-workspace
+
+# Logs
 *.log
+
+# NOTE: do NOT ignore .txt files. The V5/V6 data file must be handed in.

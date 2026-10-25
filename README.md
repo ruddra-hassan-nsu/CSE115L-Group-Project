@@ -21,5 +21,4 @@
 | 6 | Final version using structures and recursion | Lab 22 | ❌ |
 
 ## Document Guide
-- **How do I contribute?** → [`docs/HOW_TO_CONTRIBUTE.md`](docs/HOW_TO_CONTRIBUTE.md)
 - **What records and formulas are used?** → [`docs/DESIGN.md`](docs/DESIGN.md)

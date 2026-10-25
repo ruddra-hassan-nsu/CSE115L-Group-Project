@@ -23,13 +23,26 @@ int main(void)
 /* ==== OWNER: Member 1 | banner | status: TODO ==== */
 void banner(void)
 {
-    /* TODO: copy the header printf lines from v2 */
+    printf("*=========================================*\n");
+    printf("\tCampus Print & Copy Hub System\n");
+    printf("\tCSE115.6L - Team 5\n");
+    printf("\tNorth South University\n");
+    printf("*=========================================*\n\n");
 }
 
 /* ==== OWNER: Member 1 | menu | status: TODO ==== */
 void menu(void)
 {
-    /* TODO: copy the menu printf lines from v2 */
+    printf("\t[1] Accept new print task\n");
+    printf("\t[2] Display current queue\n");
+    printf("\t[3] Process & complete next print task\n");
+    printf("\t[4] Search task by customer\n");
+    printf("\t[5] Generate daily revenue & task report\n");
+    printf("\t[6] Save & load data\n");
+    printf("\t[0] Exit\n\n");
+    printf("*=========================================*\n");
+    printf("\tChoose an option to continue\n");
+    printf("*=========================================*\n\n");
 }
 
 /* ==== OWNER: Member 4 | read_job | status: TODO ==== */

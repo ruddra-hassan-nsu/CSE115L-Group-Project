@@ -1,58 +1,72 @@
 #include <stdio.h>
-#define RATE_PER_PAGE 4.00
 
-int main(void)
-{
-    int taskNum = 0, numPages, numCopies, isDuplex, isUrgent;
+#define RATE_PER_PAGE 3.50
+#define DOUBLE_LINE "+================================================+"
+#define SINGLE_LINE "+------------------------------------------------+"
 
-    printf("*=========================================*\n");
-    printf("\tCampus Print & Copy Hub System\n");
-    printf("\tCSE115.6L - Team 5\n");
-    printf("\tNorth South University\n");
-    printf("*=========================================*\n\n");
-    printf("\t[1] Accept new print task\n");
-    printf("\t[2] Display current queue\n");
-    printf("\t[3] Process & complete next print task\n");
-    printf("\t[4] Search task by customer\n");
-    printf("\t[5] Generate daily revenue & task report\n");
-    printf("\t[6] Save & load data\n");
-    printf("\t[0] Exit\n\n");
-    printf("*=========================================*\n");
-    printf("\tChoose an option to continue\n");
-    printf("*=========================================*\n\n");
+int main(void) {
+    int job_id = 0, pages, copies, is_duplex, is_urgent, pages_per_copy,
+        total_pages, queue_position;
+    double estimated_cost;
 
-    printf("*=========================================*\n");
-    printf("\tNew Task Entry\n");
-    printf("*=========================================*\n\n");
+    /* Banner */
+    printf(DOUBLE_LINE "\n");
+    printf("|         Campus Print & Copy Hub System         |\n");
+    printf("|               CSE115.6L - Team 5               |\n");
+    printf("|             North South University             |\n");
+    printf(DOUBLE_LINE "\n");
 
-    taskNum = taskNum + 1;
-    printf("Enter number of pages >> ");
-    scanf("%d", &numPages);
-    printf("Enter number of copies >> ");
-    scanf("%d", &numCopies);
-    printf("Duplex print? (1-YES, 0-NO) >> ");
-    scanf("%d", &isDuplex);
-    printf("Urgent? (1-YES, 0-NO) >> ");
-    scanf("%d", &isUrgent);
+    /* Menu */
+    printf("\n" SINGLE_LINE "\n");
+    printf("|                      MENU                      |\n");
+    printf(SINGLE_LINE "\n");
+    printf("  [1] Accept new print job\n");
+    printf("  [2] Display current queue\n");
+    printf("  [3] Process & complete next print job\n");
+    printf("  [4] Search job by customer\n");
+    printf("  [5] Generate daily revenue & task report\n");
+    printf("  [6] Save & load data\n");
+    printf("  [0] Exit\n");
+    printf(SINGLE_LINE "\n");
+    printf("  Choose an option >> 1");
 
-    int sheetsPerCopy = isDuplex * ((numPages + 1) / 2) + (1 - isDuplex) * numPages;
-    int totalSheets = sheetsPerCopy * numCopies;
-    double totalCost = totalSheets * RATE_PER_PAGE;
-    int queuePosition = isUrgent * taskNum + (1 - isUrgent) * (taskNum + 1); // innacurate, only placeholder
+    /* New print job entry */
+    printf("\n\n" DOUBLE_LINE "\n");
+    printf("|              New Print Job Entry               |\n");
+    printf(DOUBLE_LINE "\n");
 
-    printf("\n*=========================================*\n");
-    printf("\tTask Token\n");
-    printf("*=========================================*\n");
-    printf("\tTask number\t: %d\n", taskNum);
-    printf("\tDocument pages\t: %d\n", numPages);
-    printf("\tNumber of copies: %d\n", numCopies);
-    printf("\tDuplex flag\t: %d\n", isDuplex);
-    printf("\tUrgent flag\t: %d\n", isUrgent);
-    printf("*=========================================*\n");
-    printf("\tPages per copy\t: %d\n", sheetsPerCopy);
-    printf("\tTotal pages\t: %d\n", totalSheets);
-    printf("\tTotal cost\t: BDT %.2f\n", totalCost);
-    printf("\tPos. in queue\t: %d\n", queuePosition);
+    job_id = job_id + 1;
+    printf("  Enter number of pages >> ");
+    scanf("%d", &pages);
+    printf("  Enter number of copies >> ");
+    scanf("%d", &copies);
+    printf("  Print mode (1 - Duplex, 0 - Simplex) >> ");
+    scanf("%d", &is_duplex);
+    printf("  Urgent? (1 - Yes, 0 - No) >> ");
+    scanf("%d", &is_urgent);
+
+    /* Derived values */
+    pages_per_copy = is_duplex * ((pages + 1) / 2) + (1 - is_duplex) * pages;
+    total_pages = pages_per_copy * copies;
+    estimated_cost = total_pages * RATE_PER_PAGE;
+    /* Placeholder only: replaced in Version 4. */
+    queue_position = is_urgent * job_id + (1 - is_urgent) * (job_id + 1);
+
+    /* Job token */
+    printf("\n\n" DOUBLE_LINE "\n");
+    printf("|                   Job Token                    |\n");
+    printf(DOUBLE_LINE "\n");
+    printf("  Job ID\t\t: %d\n", job_id);
+    printf("  Document pages\t: %d\n", pages);
+    printf("  Number of copies\t: %d\n", copies);
+    printf("  Duplex flag\t\t: %d\n", is_duplex);
+    printf("  Urgent flag\t\t: %d\n", is_urgent);
+    printf(SINGLE_LINE "\n");
+    printf("  Pages per copy\t: %d\n", pages_per_copy);
+    printf("  Total pages\t\t: %d\n", total_pages);
+    printf("  Estimated cost\t: BDT %.2f\n", estimated_cost);
+    printf("  Position in queue\t: %d\n", queue_position);
+    printf(DOUBLE_LINE "\n");
 
     return 0;
 }

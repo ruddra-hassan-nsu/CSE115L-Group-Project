@@ -13,7 +13,7 @@ cmake-build-*/
 *.depend
 bin/
 obj/
-.vscode/*
+.vscode/
 !.vscode/tasks.json
 .idea/
 *.swp

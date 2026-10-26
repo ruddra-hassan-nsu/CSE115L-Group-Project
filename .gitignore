@@ -1,19 +1,24 @@
-# Compiled files
-*.exe
+# Compiled output
 *.o
+*.obj
+*.exe
 *.out
-
-# Code::Blocks build output (keep the .cbp project file if you use one)
-bin/
-obj/
-*.layout
-*.depend
+*.a
+build/
+cmake-build-*/
 
 # Editors
-.vscode/
-*.code-workspace
+*.cbp
+*.layout
+*.depend
+bin/
+obj/
+.vscode/*
+!.vscode/tasks.json
+.idea/
+*.swp
+*.sublime-workspace
 
-# Logs
-*.log
-
-# NOTE: do NOT ignore .txt files. The V5/V6 data file must be handed in.
+# OS
+.DS_Store
+Thumbs.db

@@ -12,7 +12,6 @@ int g_job_id = 0, g_pages, g_copies, g_is_duplex, g_is_urgent, g_urgent_waiting,
 double total_revenue;
 
 /* prototypes */
-
 void show_banner(void);
 void show_menu(void);
 void show_unavailable(void);
@@ -23,7 +22,7 @@ void read_print_job(void);
 int get_pages_per_copy(int pages, int is_duplex);
 int get_total_pages(int pages_per_copy, int copies);
 double get_estimated_cost(int total_pages);
-int get_queue_position(int job_id, int is_urgent);
+int get_queue_position(int is_urgent);
 
 void accept_print_job(void);
 void process_next_job(void);
@@ -83,7 +82,7 @@ void read_print_job(void) {
      */
 }
 
-/* Iftekhar's Task -- calculations and accept print job */
+/* Iftekhar's Task -- calculations */
 int get_pages_per_copy(int pages, int is_duplex) {
     /*
      * Start writing your code from here.
@@ -111,7 +110,7 @@ double get_estimated_cost(int total_pages) {
     return 0;
 }
 
-int get_queue_position(int is_urgent, int job_id) {
+int get_queue_position(int is_urgent) {
     /*
      * Start writing your code from here.
      * Status: TODO
@@ -121,7 +120,6 @@ int get_queue_position(int is_urgent, int job_id) {
 }
 
 /* Ruddra's Task -- accept_print_job and process next job */
-
 void accept_print_job(void) {
     /*
      * Start writing your code from here.
@@ -136,11 +134,10 @@ void process_next_job(void) {
      */
 }
 
-/* Khaled's Task -- display print token, display report */
-
-void display_print_token(int job_id, int pages, int copies, int is_duplex,
-                         int is_urgent, int pages_per_copy, int total_pages,
-                         double estimated_cost, int queue_position) {
+/* Khaled's Task -- display job token, display report */
+void display_job_token(int job_id, int pages, int copies, int is_duplex,
+                       int is_urgent, int pages_per_copy, int total_pages,
+                       double estimated_cost, int queue_position) {
     /*
      * Start writing your code from here.
      * Status: TODO

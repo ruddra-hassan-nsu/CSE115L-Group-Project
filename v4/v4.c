@@ -31,7 +31,6 @@ void display_job_token(int job_id, int pages, int copies, int is_duplex,
 void display_report(int job_id, double total_revenue, int urgent_waiting,
                     int regular_waiting);
 
-/* Ruddra's Task -- menu loop */
 int main(void) {
     int choice;
 
